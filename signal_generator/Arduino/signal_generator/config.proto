@@ -1,0 +1,34 @@
+package signal_generator;
+
+message Config {
+  /* Field numbers 1-49 reserved for base-node-rpc standard fields.
+   *
+   * This makes it possible for clients/devices based on the base-node-rpc
+   * package to interface with each other. */
+  optional uint32 serial_number = 1;
+  optional uint32 baud_rate = 2 [default = 115200];
+  optional uint32 i2c_address = 3;
+
+  /* Start new fields below.
+   * For example:
+   *
+   *      optional float my_float_field = 50;
+   *      optional int32 my_int_field = 51;
+   */
+  optional float max_waveform_voltage = 50 [default = 7];
+  optional float min_waveform_frequency = 51;
+  optional float max_waveform_frequency = 52 [default = 10000];
+  optional float hf_amplitude_correction = 53 [default = 1.19];
+  repeated uint32 pot = 54;
+  optional uint32 spi_sck_pin = 55 [default = 5];
+  optional uint32 spi_mosi_pin = 56 [default = 6];
+  optional uint32 ltc6903_ss_pin = 57 [default = 2];
+  optional uint32 ad5206_ss_pin = 58 [default = 3];
+  optional uint32 freq_range_pin = 59 [default = 4];
+}
+
+
+message State {
+  optional float voltage = 1;
+  optional float frequency = 2;
+}
