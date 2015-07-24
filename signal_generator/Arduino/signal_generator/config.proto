@@ -16,7 +16,7 @@ message Config {
    *      optional int32 my_int_field = 51;
    */
   optional float max_waveform_voltage = 50 [default = 7];
-  optional float min_waveform_frequency = 51;
+  optional float min_waveform_frequency = 51 [default = 100];
   optional float max_waveform_frequency = 52 [default = 10000];
   optional float hf_amplitude_correction = 53 [default = 1.19];
   repeated uint32 pot = 54;
@@ -29,6 +29,6 @@ message Config {
 
 
 message State {
-  optional float voltage = 1;
-  optional float frequency = 2;
+  optional float voltage = 1 [default = 0];
+  optional float frequency = 2 [default = 1000];
 }

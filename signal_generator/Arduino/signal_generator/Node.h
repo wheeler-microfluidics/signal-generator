@@ -62,7 +62,7 @@ public:
   void begin();
   void set_i2c_address(uint8_t value);  // Override to validate i2c address
 
-  bool on_state_voltage_changed(float original_value, float new_value) {
+  bool on_state_voltage_changed(float new_value) {
     /* This method is triggered whenever a voltage is included in a state
      * update. */
     if ((0 <= new_value) && (new_value <= config_._.max_waveform_voltage)) {
@@ -85,7 +85,8 @@ public:
     }
   }
 
-  void reset_pots();
+  void set_pots();  // Initialize potentiometer settings from config
+  void reset_pots();  // Reset potentiometer settings to defaults
   float vout_pk_pk();
   void apply_waveform_voltage(float vrms);
   bool on_config_hf_amplitude_correction_changed(float correction) {

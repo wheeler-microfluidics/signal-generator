@@ -11,6 +11,8 @@ void Node::begin() {
   state_.validator_.set_node(*this);
   state_._.voltage = 0;
   state_._.frequency = config_._.min_waveform_frequency;
+  state_._.has_voltage = true;
+  state_._.has_frequency = true;
   // Start Serial after loading config to set baud rate.
 #if !defined(DISABLE_SERIAL)
   //Serial.begin(config_._.baud_rate);
@@ -25,6 +27,10 @@ void Node::begin() {
   pinMode(config_._.freq_range_pin, OUTPUT);
   pinMode(config_._.spi_sck_pin, OUTPUT);
   pinMode(config_._.spi_mosi_pin, OUTPUT);
+
+  set_pots();  // Initialize potentiometer settings from config
+  on_state_voltage_changed(state_._.voltage);
+  on_state_frequency_changed(state_._.frequency);
 }
 
 
@@ -35,6 +41,16 @@ void Node::set_i2c_address(uint8_t value) {
     * address is valid. */
   config_.validator_.i2c_address_(address, config_._.i2c_address);
   config_._.i2c_address = address;
+}
+
+
+void Node::set_pots() {
+  if (config_._.pot_count < sizeof(config_._.pot) / sizeof(uint32_t)) {
+    reset_pots();
+  }
+  for(uint8_t i = 0; i < config_._.pot_count; i++) {
+    set_pot(i, config_._.pot[i]);
+  }
 }
 
 
