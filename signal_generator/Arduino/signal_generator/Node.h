@@ -19,7 +19,7 @@
 #include "SignalGenerator.h"
 #include "signal_generator_config_validate.h"
 #include "signal_generator_state_validate.h"
-#include "signal_generator_config_pb.h"
+#include <SignalGenerator/config_pb.h>
 
 
 namespace signal_generator {

@@ -20,6 +20,7 @@ void Node::begin() {
 #endif  // #ifndef DISABLE_SERIAL
   // Set i2c clock-rate to 400kHz.
   TWBR = 12;
+  Wire.begin((uint8_t)config_._.i2c_address);
   SignalGenerator.begin();
 
   pinMode(config_._.ltc6903_ss_pin, OUTPUT);
