@@ -4,6 +4,9 @@
 
 
 ![https://ci.appveyor.com/api/projects/status/github/wheeler-microfluidics/signal-generator?branch=master&svg=true](https://ci.appveyor.com/api/projects/status/github/wheeler-microfluidics/signal-generator?branch=master&svg=true)
+
+
+![https://ci.appveyor.com/api/projects/status/github/wheeler-microfluidics/signal-generator?branch=master&svg=true](https://ci.appveyor.com/api/projects/status/github/wheeler-microfluidics/signal-generator?branch=master&svg=true)
 # signal-generator #
 
 Control package for an open-source [signal generator board][3].
